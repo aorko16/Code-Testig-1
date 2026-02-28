@@ -1,7 +1,9 @@
-
-name: Deploy With Inputs-1
+name: Deploy With Inputs-77
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       environment:
@@ -21,6 +23,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Show Selected Environment
-        run: echo "Environment: ${{ inputs.environment }}"
-
-
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual run - Environment: ${{ inputs.environment }}"
+          else
+            echo "Triggered by push to main"
+          fi
