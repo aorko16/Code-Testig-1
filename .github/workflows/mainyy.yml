@@ -1,0 +1,13 @@
+name: Manual Test-2
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Select Environment
+        required: true
+        default:  Dev
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Env is ${{ inputs.environment }}"
