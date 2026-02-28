@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+       - name: Checkout code from repo
+        uses: actions/checkout@v4
+
       - name: Show Selected Environment
         run: echo "Environment: ${{ inputs.environment }}"
-
-
