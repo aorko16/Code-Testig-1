@@ -1,13 +1,10 @@
-name: Deploy With Inputs-77
+name: Manual Test-1111
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Select Environment'
+        description: Select Environment
         required: true
         type: choice
         options:
@@ -15,17 +12,7 @@ on:
           - prod
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code from repo
-        uses: actions/checkout@v4
-
-      - name: Show Selected Environment
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "Manual run - Environment: ${{ inputs.environment }}"
-          else
-            echo "Triggered by push to main"
-          fi
+      - run: echo "Env is ${{ inputs.environment }}"
