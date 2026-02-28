@@ -1,0 +1,10 @@
+name: Hello World
+on: workflow_dispatch
+jobs:
+  Test:
+   runs-on: ubuntu-latest
+   steps:
+     - name: My test step
+       run: |
+        echo 'Welcome Aorko'
+        echo 'Testing Github Action Code'
