@@ -1,0 +1,29 @@
+
+name: Deploy With Inputs-102
+
+on:
+  push:
+    branches:
+      - main   # change if your default branch is different
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select Environment'
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code from repo
+        uses: actions/checkout@v4
+
+      - name: Show Selected Environment
+        run: echo "Environment: ${{ inputs.environment }}"
+
+
