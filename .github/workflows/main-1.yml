@@ -1,0 +1,22 @@
+name: Deploy With Inputs-1
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select Environment'
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show Selected Environment
+        run: echo "Environment: ${{ inputs.environment }}"
+
+
